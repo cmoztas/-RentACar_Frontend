@@ -1,10 +1,12 @@
-<h3>Colors</h3>
-<div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
-    <div class="spinner-grow text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-</div>
+<h3 class="mt-3">Renkler</h3>
 
-<ul *ngIf="dataLoaded==true" class="list-group">
-    <li *ngFor="let color of colors" class="list-group-item">{{color.name}}</li>
+<ul class="list-group">
+    <li routerLink="/cars" 
+    (click)="clearCurrentColorClass()"
+    [class]="getAllColorsClass()">Tüm renkler</li>
+
+    <li (click)="setCurrentBrand(color)" 
+    routerLink="cars/color/{{color.id}}" 
+    *ngFor="let color of colors" 
+    [class]="getCurrentColorClass(color)">{{color.name}}</li>
 </ul>
